@@ -1,0 +1,115 @@
+
+link web : https://nailapimanager.herokuapp.com
+
+--API User
+@api/users/signUp
+    method : POST
+    Params : {
+      email,
+      password,
+      firstName,
+      lastName
+    }
+
+
+@api/users/signIn
+    method : POST
+    Params : {
+      email,
+      password
+    }
+
+@api/users/editAvatar
+    header : x-auth-token
+    method : POST
+    file : {
+      jpg, png
+    }
+
+
+@api/users/editName
+    header : x-auth-token
+    method : POST
+    param : {
+      firstName,
+      lastName
+    }
+
+
+@api/users/pluspoints
+    header : x-auth-token
+    method : POST
+    param : {
+      point : {
+        type : 'number'
+      }
+    }
+
+
+@api/users/getTop10User
+  header : x-auth-token
+  method : GET
+
+
+@getDataUser
+  header : x-auth-token
+  method : GET
+
+
+
+--API Booking 
+@api/booking/getAllBook
+  header : x-auth-token
+  method : GET
+  role : Admin
+  khi slot đã dc tạo
+  param-1 : {
+            idSlot,
+            idService,
+            
+  }
+  khi slot chưa dc tạo
+  param-2 : {
+            date,
+            slotName,
+            idService,
+  }
+
+@api/booking/booking
+  header : x-auth-token
+  method : POST
+  param : {
+    idSlot,
+    idService (Array),
+  }
+
+Real Time book 
+
+on('changeSlotRealTime',  (data) => {
+  
+})
+
+
+--API Cart 
+@api/cart/getCartByIdUser
+  header : x-auth-token
+  method : GET
+
+@api/cart/updateCart
+  header : x-auth-token
+  method : POST
+  param : {
+    idService
+  }
+
+@api/cart/deleteProductInCart
+  header : x-auth-token
+  method : POST
+  param : {
+    idService
+  }
+
+  --API Service 
+@api/service/getAllServices
+  header : x-auth-token
+  method : GET
